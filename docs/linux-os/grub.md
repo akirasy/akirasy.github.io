@@ -93,3 +93,19 @@ The `grub man` says to be sure to not leave empty line at the end of file. I hav
     ```
     sudo update-grub
     ```
+
+## Boot to OS using GRUB shell
+
+1. Identify `/boot` partition
+    ```
+    grub> ls
+    # expected output
+    # (hd0) (hd0,1) (hd0,2) ...
+    ```
+2. Adapt to these commands to boot to OS
+    ```
+    grub> set root=(hd0,1)
+    grub> linux /boot/vmlinuz root=/dev/sda1
+    grub> initrd /initrd.img
+    grub> boot
+    ```
